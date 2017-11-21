@@ -207,8 +207,6 @@ $(function () {
         var marker = new google.maps.Marker({
             map: map,
             position: latlng,
-            icon: 'images/marker.png'
-            
         });
 
         // Keep Marker in Center
