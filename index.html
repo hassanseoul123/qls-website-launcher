@@ -21,10 +21,11 @@
         h1 {
             text-align: center;
             color: #5d7ce0;
+            font-size: 36px;
         }
 
         .progress-bar-wrapper {
-            max-width: 500px;
+            max-width: 800px;
             background: #d2d0d6;
         }
 
@@ -57,13 +58,13 @@
             outline: none;
             /*to remove bluw glow in chrome*/
             font-size: 24px;
-            margin-left: 30%;
+            margin-left: 40%;
         }
 
         .load-button {
             margin-top: 10px;
             padding: 5px 10px;
-            border: 2px solid #192ff7ce;
+            border: 2px solid #ffffffce;
             border-radius: 2px;
             background: #5d7ce0;
             color: white;
@@ -72,8 +73,8 @@
             font-family: 'Varela Round', sans-serif;
             outline: none;
             /*to remove bluw glow in chrome*/
-            font-size: 30px;
-            margin-left: 30%;
+            font-size: 36px;
+            margin-left: 40%;
         }
     </style>
 
@@ -93,7 +94,7 @@
                     const result = await myloader();
                 }
                 $('#content0').text("Congratulations...! 🎉🎉🎉 Website published. Redirecting...");
-                window.location.href("https://www.qls.qamc.edu.pk")
+                window.location.replace("https://www.qls.qamc.edu.pk")
             })
         });
 
