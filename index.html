@@ -1,78 +1,150 @@
 <html>
-  
-  <head>
+
+<head>
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-      body{
-        background: #3B2D4E;
-        font-family: 'Varela Round', sans-serif;
-      }
-      .container {
-        width: 40%;
-        margin: 0 auto;
-        margin-top: 100px;
-      }
-      h1 {
-        text-align: center;
-        color: #89A4FF;
-      }
-      .progress-bar-wrapper{
-        max-width: 500px;
-        background: #2F2540;
-      }
-      .progress-bar{
-        background: #89A4FF;
-        height: 10px;
-        width: 0px;
-      }
-      .load-button{
-        margin-top: 10px;
-        padding: 5px 10px;
-        border: 1px solid #89A4FF;
-        border-radius: 2px;
-        background: #89A4FF;
-        color: white;
-        font-weight: bold;
-        letter-spacing: 1px;
-        font-family: 'Varela Round', sans-serif;
-        outline: none;  /*to remove bluw glow in chrome*/
-        font-size:36px;
-      }
+        @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+        body {
+            background: url("042-symphony.png");
+            background-attachment: scroll;
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5d7ce0;
+        }
+
+        .progress-bar-wrapper {
+            max-width: 500px;
+            background: #d2d0d6;
+        }
+
+        .progress-bar {
+            background: #5d7ce0;
+            height: 10px;
+            width: 0px;
+        }
+
+        #content0 {
+            margin-top: 10px;
+            padding: 5px 10px;
+            color: black;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-family: 'Varela Round', sans-serif;
+            outline: none;
+            /*to remove bluw glow in chrome*/
+            font-size: 24px;
+            margin-left: 0%;
+        }
+
+        #content {
+            margin-top: 10px;
+            padding: 5px 10px;
+            color: black;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-family: 'Varela Round', sans-serif;
+            outline: none;
+            /*to remove bluw glow in chrome*/
+            font-size: 24px;
+            margin-left: 30%;
+        }
+
+        .load-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: 2px solid #192ff7ce;
+            border-radius: 2px;
+            background: #5d7ce0;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-family: 'Varela Round', sans-serif;
+            outline: none;
+            /*to remove bluw glow in chrome*/
+            font-size: 30px;
+            margin-left: 30%;
+        }
     </style>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
-      $(document).ready(function() {
-      $('body').on('click','.load-button',function(){
-        myloader();
-      })
-    });
+        $(document).ready(function () {
+            $('body').on('click', '.load-button', async function () {
+                var width = parseInt($('.progress-bar').css('width'));
+                var widthWrapper = parseInt($('.progress-bar-wrapper').css('width'));
+                $('.load-button').hide();
+                for (i = 0; i <= widthWrapper; i++) {
+                    $('.progress-bar').css('width', i);
+                    var width = parseInt($('.progress-bar').css('width'));
+                    $('#content0').text("Hold on, Website brewing in progress...");
+                    $('#content').text(parseInt(width / widthWrapper * 100) + "%");
+                    const result = await myloader();
+                }
+                $('#content0').text("Congratulations...! 🎉🎉🎉 Website published. Redirecting...");
+                window.location.href("https://www.qls.qamc.edu.pk")
+            })
+        });
 
-    //this function will call after every 10 mili sec
-    function myloader() {
-      var width = parseInt($('.progress-bar').css('width')) + 1;
-      if(width <= 500) {
-        $('.progress-bar').css('width', width);
-        setTimeout("myloader()", 10); //this should be in if condition
-      }
-      else {
-        $('.progress-bar').css('width', 0);
-      }
-    }
+        //this function will call after every 10 mili sec
+        function myloader() {
+            return new Promise((resolve, reject) => {
+                let y = 0;
+                //$('.load-button').hide();
+                //var width = parseInt($('.progress-bar').css('width'));
+                //var widthWrapper = parseInt($('.progress-bar-wrapper').css('width'));
+                //$('#content0').text(widthWrapper);
+                setTimeout(() => {
+                    for (j = 0; j <= 100; j++) {
+                        //$('.progress-bar').css('width', i);
+                        //var width = parseInt($('.progress-bar').css('width'));
+                        //$('#content0').text("Hold on, Website brewing in progress...");
+                        //$('#content').text(parseInt(width / widthWrapper * 100) + "%");
+                        y++;
+                    }
+
+
+                    //if (width <= widthWrapper) {
+                    //    $('.progress-bar').css('width', width);
+                    //    setTimeout("myloader()", 20); //this should be in if condition
+                    //    $('#content0').text("Hold on, Website brewing in progress...");
+                    //    $('#content').text(parseInt(width / widthWrapper * 100) + "%");
+                    //}
+                    //else {
+                    //    $('.progress-bar').css('width', 0);
+                    //}
+                    resolve(y)
+                }, 20)
+                //$('#content0').text("Website published. Redirecting...");
+                //window.location.replace("https://www.qls.qamc.edu.pk")
+            })
+        }
+
+
     </script>
-  </head>
-  
-  
-  
-  <body>
-    <div class="container">
-      <h1>Click the button below to Publish website.</h1>
-      <div class="progress-bar-wrapper">
-        <div class="progress-bar"></div>
-      </div>
-      <button class="load-button">Publish</button>
-    </div>
-  </body>
-</html>
+</head>
 
+
+
+<body>
+    <div class="container">
+        <h1>Click the button below to Publish website.</h1>
+        <div class="progress-bar-wrapper">
+            <div class="progress-bar"></div>
+        </div>
+        <div id="content0"></div>
+        <div id="content"></div>
+        <button class="load-button">Publish</button>
+    </div>
+</body>
+
+</html>
